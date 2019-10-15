@@ -58,20 +58,51 @@ function capitalizeLetters(str) {
 // Return the character that is most common in a string
 // ex. maxCharacter('javascript') == 'a'
 function maxCharacter(str) {
-  maxChar = ""
-  currentChar = ""
-  for (i of str){
-    console.log(i);
+  const letters = {};
+  let maxNum = 0;
+  let maxChar = '';
+
+  str.split('')
+  for (i in str){
+    if (letters[str[i]]){
+      letters[str[i]]++;
+    }
+    else{
+      letters[str[i]] = 1;
+    }
   }
 
+  for (j in letters){
+    if (letters[j] > maxNum) {
+      maxNum = letters[j];
+      maxChar = j;
+    }
+  }
+    
+  
+  return maxChar;
 }
 
-
-
 // CHALLENGE 6: FIZZBUZZ
-// Write a program that prints all the numbers from 1 to 100. For multiples of 3, instead of the number, print "Fizz", for multiples of 5 print "Buzz". For numbers which are multiples of both 3 and 5, print "FizzBuzz".
+// Write a program that prints all the numbers from 1 to 100. For multiples of 3,
+// instead of the number, print "Fizz", for multiples of 5 print "Buzz". 
+//For numbers which are multiples of both 3 and 5, print "FizzBuzz".
 function fizzBuzz() {
-
+  for (i = 1; i <100; i++){
+    if(i%3 === 0 && i%5 === 0){
+      console.log("FizzBuzz");
+    }
+    else if(i%3 === 0) {
+      console.log("Fizz");
+    }
+    else if(i%5 === 0){
+      console.log("Buzz");
+    }
+    else {
+      console.log(i);
+    }
+    
+  }
 }
 
 
@@ -81,8 +112,12 @@ const output = reverseString('goodbye');
 const palin = isPalindrome("tacocat");
 const tryReverse = reverseInt(521);
 const capLet = capitalizeLetters("i love javascript");
+const maxCharacters = maxCharacter("javascript");
+
 
 console.log(output);
 console.log(palin);
 console.log(tryReverse);
 console.log(capLet);
+console.log(maxCharacters);
+const testFizzBuzz = fizzBuzz();
